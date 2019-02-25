@@ -3,6 +3,7 @@ const config = require('./common/config/env.config.js');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const appRouter = express.Router();
 
 const AuthorizationRouter = require('./authorization/routes.config');
 const UsersRouter = require('./users/routes.config');
@@ -22,9 +23,11 @@ app.use(function (req, res, next) {
 });
 
 app.use(bodyParser.json());
-AuthorizationRouter.routesConfig(app);
-UsersRouter.routesConfig(app);
-TasksRouter.routesConfig(app);
+AuthorizationRouter.routesConfig(appRouter);
+UsersRouter.routesConfig(appRouter);
+TasksRouter.routesConfig(appRouter);
+
+app.use('/api', appRouter);
 
 app.listen(config.port, function () {
     console.log('app listening at port %s', config.port);
