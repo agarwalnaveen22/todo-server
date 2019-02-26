@@ -5,6 +5,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const appRouter = express.Router();
 
+var swaggerUi = require('swagger-ui-express'),
+swaggerDocument = require('./swagger.json');
+
 const AuthorizationRouter = require('./authorization/routes.config');
 const UsersRouter = require('./users/routes.config');
 const TasksRouter = require('./tasks/routes.config');
@@ -27,6 +30,8 @@ AuthorizationRouter.routesConfig(appRouter);
 UsersRouter.routesConfig(appRouter);
 TasksRouter.routesConfig(appRouter);
 
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/api', appRouter);
 
 app.listen(config.port, function () {

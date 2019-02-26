@@ -1,20 +1,46 @@
-# rest-api-tutorial
+# Todo Server Rest APIs
 
-This sample is published as part of the blog article at www.toptal.com/blog:
+This app will be run in docker container, hence it is mandatory to install docker in the system:-
 
-- https://www.toptal.com/nodejs/secure-rest-api-in-nodejs
+https://docs.docker.com/install/
 
-Visit www.toptal.com/blog and subscribe to our newsletter to read great posts
+# verify docker is running
 
-## Before using
+docker -v
 
-- Please make sure that you have:
- - node.js installed (https://nodejs.org/)
- - have mongodb installed and running locally (https://www.mongodb.com/)
-   - Using Windows, just open the terminal at where you installed mongo and run `mongod.exe`
- - run npm install in your root project folder
-## Usage
+# install mongodb via docker
 
-To run the project, please use a command line the following:
- - npm start
-    - It will run the server at port 3600.
+run following in terminal:-
+
+docker pull mongo
+docker run -d -p 27017:27017 mongo
+
+# download git repository
+
+git clone https://github.com/agarwalnaveen22/todo-server.git
+
+# change mongodb host ip
+
+go to project root folder -> common -> config -> connect.config.js
+
+and change localhost to ip address in which mongodb is running
+
+# create docker image from dockerfile
+
+go to project root folder and run following command:-
+
+docker build -t todo:latest .
+
+# create docker container
+
+docker run -d -p 3600:3600 todo
+
+# check docker container is running
+
+docker ps
+
+# start swagger api document
+
+go to any browser and enter following url:-
+
+http://localhost:3600/api-docs
