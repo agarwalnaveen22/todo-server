@@ -13,6 +13,7 @@ docker -v
 run following in terminal:-
 
 docker pull mongo
+
 docker run -d -p 27017:27017 mongo
 
 # download git repository
