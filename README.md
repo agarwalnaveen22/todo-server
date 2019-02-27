@@ -1,47 +1,67 @@
 # Todo Server Rest APIs
 
-This app will be run in docker container, hence it is mandatory to install docker in the system:-
+This app contains APIs of todo app.
 
-https://docs.docker.com/install/
+    We have created 2 models one is user and another one is tasks
 
-# verify docker is running
+    User:- can create/update/list/view and delete user
 
-docker -v
+    Tasks:- can create/update/list/view and delete tasks based on userId
 
-# install mongodb via docker
+# Technologies
 
-run following in terminal:-
+nodeJS:- server
 
-docker pull mongo
+expressJS:- scripting framework to create APIs
 
-docker run -d -p 27017:27017 mongo
+jwt token:- to authenticate securely into app
 
-# download git repository
+swagger ui:- documentation and testing of APIs
 
-git clone https://github.com/agarwalnaveen22/todo-server.git
+# Deployment
 
-# change mongodb host ip
+    This app will be run in docker container, hence it is mandatory to install docker in the system:-
 
-go to project root folder -> common -> config -> connect.config.js
+    https://docs.docker.com/install/
 
-and change localhost to ip address in which mongodb is running
+    # verify docker is running
 
-# create docker image from dockerfile
+        docker -v
 
-go to project root folder and run following command:-
+    # install mongodb via docker
 
-docker build -t todo:latest .
+        run following in terminal:-
 
-# create docker container
+        docker pull mongo
 
-docker run -d -p 3600:3600 todo
+        docker run -d -p 27017:27017 mongo
 
-# check docker container is running
+    # download git repository
 
-docker ps
+        git clone https://github.com/agarwalnaveen22/todo-server.git
 
-# start swagger api document
+    # change mongodb host ip
 
-go to any browser and enter following url:-
+        go to project root folder -> common -> config -> connect.config.js
 
-http://localhost:3600/api-docs
+        and change localhost to ip address in which mongodb is running
+
+    # create docker image from dockerfile
+
+        go to project root folder and run following command:-
+
+        docker build -t todo:latest .
+
+    # create docker container
+
+        docker run -d -p 3600:3600 todo
+
+    # check docker container is running
+
+        docker ps
+
+    # start swagger api document
+
+        go to any browser and enter following url:-
+
+        http://localhost:3600/api-docs
